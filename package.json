@@ -1,0 +1,26 @@
+{
+  "name": "cuddleco",
+  "version": "1.0.0",
+  "description": "server for cuddleco app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js"
+  },
+  "author": "Emily",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
+}
