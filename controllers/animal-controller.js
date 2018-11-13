@@ -18,8 +18,11 @@ router.post('/create', (req, res) => {
             personality: personality,
             image: image,
         })
-        .then(function() {
-            res.send('new animal posted');
+        .then(function(newAnimal) {
+            res.json({
+                message: 'new animal happened',
+                animal: newAnimal
+            });
         },
         function(err) {
             console.log(err);
@@ -35,14 +38,27 @@ router.delete('/delete/:id', (req, res) => {
 
 /*******UPDATE*******/
 router.put('/update/:id', (req, res) => {
+    let name = req.body.table.name
+    let age = req.body.table.age;
+    let cat = req.body.table.cat;
+    let personality = req.body.table.personality;
+    let image = req.body.table.image;
+
     if(!req.errors) {
-        Animal.update(req.body.animal, { where: { id: req.params.id }})
+        Animal.update({
+            name: name,
+            age: age,
+            cat: cat,
+            personality: personality,
+            image: image},
+            { where: { id: req.params.id }})
+            
             .then(animal => res.status(200).json(animal))
             .catch(err => res.status(500).json(req.errors))
     }
 })
 
-/*******GET ALL******/
+/*******GET ANIMALS******/
 router.get('/all', (req, res) => {
     Animal.findAll()
         .then(animal => res.status(200).json(animal))
