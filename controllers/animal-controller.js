@@ -1,9 +1,10 @@
 const router = require('express').Router();
 //const validateSession = require('../middleware/validate-session');
 const Animal = require('../db').import('../models/animals');
+const validateSession = require('../middleware/validationSession.js');
 
 /********CREATE NEW ANIMAL********/
-router.post('/create', (req, res) => {
+router.post('/create', validateSession, (req, res) => {
     let name = req.body.animal.name;
     let age = req.body.animal.age;
     let cat = req.body.animal.cat;
@@ -30,7 +31,7 @@ router.post('/create', (req, res) => {
 })
 
 /********DELETE ANIMAL********/
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', validateSession, (req, res) => {
     Animal.destroy({ where: { id: req.params.id }})
         .then( animal => res.status(200).json(animal))
         .catch( err => res.json(req.errors))
