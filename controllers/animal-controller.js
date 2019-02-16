@@ -1,5 +1,4 @@
 const router = require('express').Router();
-//const validateSession = require('../middleware/validate-session');
 const Animal = require('../db').import('../models/animals');
 const validateSession = require('../middleware/validationSession.js');
 
